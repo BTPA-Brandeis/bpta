@@ -9,19 +9,19 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     await queryInterface.bulkInsert('users', [
-      { userFirstName: '', userLastName: '', password: '', accessLevel: '', email: '', DOB: '', profileImage: '', securityQuestionOne: '', securityQuestionTwo: '', locationZone: '' },
+      { userFirstName: '', userLastName: '', password: '', accessLevel: 1, email: '', DOB: '', profileImage: '', securityQuestionOne: '', securityQuestionTwo: '', locationZone: '' },
     ]),
 
       await queryInterface.bulkInsert('fitness', [
-        { userID: '', pushUps: '', sitUps: '', boxJumps: '', kilometersRan: '', waterIntakeOz: '' }
+        { userID: 1, pushUps: 0, sitUps: 0, boxJumps: 0, kilometersRan: 0, waterIntakeOz: 0 }
       ]),
 
       await queryInterface.bulkInsert('usersFitnessLinkings', [
-        { userID: '', fitnessID: '' }
+        { userID: 1, fitnessID: 1 }
       ]),
 
       await queryInterface.bulkInsert('posts', [
-        { accessLevelReq: '', body: '', userID: '' }
+        { accessLevelReq: 1, body: '', userID: 1 }
       ])
 
     return queryInterface.bulkInsert('resources', [
