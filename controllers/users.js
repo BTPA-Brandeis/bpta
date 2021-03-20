@@ -15,3 +15,21 @@ export const getUserByLastName = async (request, response) => {
 
   return response.send(user)
 }
+
+export const saveNewUser = async (request, response) => {
+  try {
+    const { userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone } = request.body
+
+    if (!userFirstName || !userLastName || !password || !accessLevel || !email || !DOB || !profileImage || !securityQuestionOne || !securityQuestionTwo || !locationZone) {
+      return response
+        .status(400)
+        .send('The following fields are required: userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone')
+    }
+
+    const newUser = await models.Users.create({ userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone })
+
+    return response.status(201).send(newUser)
+  } catch (error) {
+    return response.status(500).send('Unable to save new user, please try again')
+  }
+}

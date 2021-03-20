@@ -1,7 +1,6 @@
 import express from 'express'
-// import bodyParser from 'body-parser'
 import path from 'path'
-import { getAllUsers, getUserByLastName } from './controllers/users'
+import { getAllUsers, getUserByLastName, saveNewUser } from './controllers/users'
 import { getAllFitnesses } from './controllers/fitnesses'
 import { getAllPosts } from './controllers/posts'
 import { getAllResources } from './controllers/resources'
@@ -17,6 +16,8 @@ app.get('/api/fitnesses', getAllFitnesses)
 app.get('/api/posts', getAllPosts)
 
 app.get('/api/resources', getAllResources)
+
+app.post('/api/users', bodyParser.json(), saveNewUser)
 
 app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
 

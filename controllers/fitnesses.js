@@ -5,3 +5,4 @@ export const getAllFitnesses = async (request, response) => {
 
   return response.send(fitnesses)
 }
+
