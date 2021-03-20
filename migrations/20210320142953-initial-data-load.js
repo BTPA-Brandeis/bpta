@@ -10,12 +10,12 @@ module.exports = {
       { userFirstName: 'Carrye', userLastName: 'Gaulin', password: 'fucker', accessLevel: 1, email: 'carryegaulin111@gmail.com', DOB: '03/31/1978', profileImage: 'me.jpg', securityQuestionOne: 'work dammit', securityQuestionTwo: 'for real', locationZone: '7' },
     ]),
 
-      await queryInterface.bulkInsert('fitnesses', [
+      await queryInterface.bulkInsert('workouts', [
         { userID: 1, pushUps: 0, sitUps: 0, boxJumps: 0, kilometersRan: 0, waterIntakeOz: 0 }
       ]),
 
-      await queryInterface.bulkInsert('usersFitnessesLinkings', [
-        { userID: 1, fitnessesID: 1 }
+      await queryInterface.bulkInsert('usersWorkoutsLinkings', [
+        { userID: 1, WorkoutsID: 1 }
       ]),
 
       await queryInterface.bulkInsert('posts', [
@@ -38,9 +38,9 @@ module.exports = {
 
     await queryInterface.bulkDelete('posts')
 
-    await queryInterface.bulkDelete('usuersFitnessesLinkings')
+    await queryInterface.bulkDelete('usuersWorkoutsLinkings')
 
-    await queryInterface.bulkDelete('fitnesses')
+    await queryInterface.bulkDelete('Workouts')
 
     return queryInterface.bulkDelete('users')
   }
