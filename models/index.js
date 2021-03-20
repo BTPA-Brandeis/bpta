@@ -13,7 +13,7 @@ const connection = new Sequelize(config.database, config.username, config.passwo
   host: config.host, dialect: config.dialect,
 })
 
-const Fitness = FitnessModel(connection, Sequelize)
+/*const Fitness = FitnessModel(connection, Sequelize)
 const Posts = PostsModel(connection, Sequelize)
 const Resources = ResourcesModel(connection, Sequelize)
 const Users = UsersModel(connection, Sequelize)
@@ -30,5 +30,5 @@ export default {
   Resources,
   Users,
   UserFitnessLinkings,
-  Sequelize,
+  SequelizeOp,
 }
