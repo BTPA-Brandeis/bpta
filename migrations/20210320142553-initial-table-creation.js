@@ -65,6 +65,7 @@ module.exports = {
       url: { type: Sequelize.STRING, allowNull: false },
       description: { type: Sequelize.STRING, allowNull: false },
       subject: { type: Sequelize.STRING, allowNull: false },
+      phoneNo: { type: Sequelize.STRING },
       createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,

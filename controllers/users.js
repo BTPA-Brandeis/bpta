@@ -1,7 +1,7 @@
 import models from '../models'
 
 export const getAllUsers = async (request, response) => {
-  const users = await models.Users.findAll()
+  const users = await models.UsersModel.findAll()
 
   return response.send(users)
 }
@@ -9,7 +9,7 @@ export const getAllUsers = async (request, response) => {
 export const getUserByUserLastName = async (request, response) => {
   const { userLastName } = request.params
 
-  const user = await models.Users.findOne({
+  const user = await models.UsersModel.findOne({
     where: {
       [models.Sequelize.Op.or]: [
         { id: userLastName },

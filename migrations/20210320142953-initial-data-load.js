@@ -25,7 +25,7 @@ module.exports = {
       ])
 
     return queryInterface.bulkInsert('resources', [
-      { url: '', description: '', subject: '' }
+      { url: '', description: '', subject: '', phoneNo: '' }
     ])
   },
 
