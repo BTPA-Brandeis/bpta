@@ -5,3 +5,13 @@ export const getAllUsers = async (request, response) => {
 
   return response.send(users)
 }
+
+export const getUserByLastName = async (request, response) => {
+  const { userLastName } = request.params
+
+  const user = await models.Users.findOne({
+    where: { userLastName },
+  })
+
+  return response.send(user)
+}
