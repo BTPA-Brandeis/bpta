@@ -17,19 +17,26 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use(express.static('public'))
+app.use(passport.initialize());
+app.use(passport.session());
+// Configure body parser for AJAX requests
+app.use(express.urlencoded({
+	extended: true
+}));
+app.use(express.json());
 
+// Controllers links
 app.get('/api/users', getAllUsers)
-
 app.get('/api/fitnesses', getAllFitnesses)
-
 app.get('/api/posts', getAllPosts)
-
 app.get('/api/resources', getAllResources)
 
-app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
-
-app.listen(1337, () => {
-  console.log('Listening on port 1337...')
-})
-
+//{ force: false } to not overwrite DB each app load
+//{ force: true } to overwrite DB each app load
+db.sequelize.sync({
+	force: false
+}).then(() => {
+	app.listen(PORT, () => {
+		console.log(`Listening on PORT ${PORT}`);
+	});
+});

@@ -1,25 +1,40 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "./node_modules/.bin/concurrently \"expo start\" \"npm run dev:server\"",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "dev": "./node_modules/.bin/concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev": "./node_modules/.bin/concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "./node_modules/.bin/webpack --progress --config webpack.dev.js",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "dev:server": "./node_modules/.bin/env-cmd ./node_modules/.bin/babel-watch server.js"
+    "dev:server": "./node_modules/.bin/env-cmd ./node_modules/.bin/babel-watch server.js",
+    "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/native": "^5.9.3",
+    "@react-navigation/stack": "^5.14.3",
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "expo": "~40.0.0",
+    "expo-splash-screen": "~0.8.0",
     "expo-status-bar": "~1.0.3",
+    "expo-updates": "~0.4.0",
     "express": "^4.17.1",
+    "ios": "0.0.1",
     "mysql2": "^2.2.5",
     "react": "16.13.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native": "~0.63.4",
+    "react-native-elements": "^3.3.2",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "~2.15.2",
+    "react-native-unimodules": "~0.12.0",
     "react-native-web": "~0.13.12",
     "sequelize": "^6.5.1",
     "sequelize-cli": "^6.2.0"
@@ -33,6 +48,9 @@
     "babel-watch": "^7.3.0",
     "concurrently": "^5.3.0",
     "env-cmd": "^10.1.0"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "private": true
 }
