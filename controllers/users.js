@@ -37,10 +37,10 @@ export const saveNewUser = async (request, response) => {
 export const deleteUser = async (request, response) => {
   try {
     const { ID } = request.params
-    await models.Users.destroy({ where: { ID } })
+    const user = await models.Users.findOne({ where: { ID } })
     await models.Users.destroy({ where: { ID } })
     return response.sendStatus(204)
   } catch (error) {
-    return response.status(500).send('Unable to delete userr, please try again')
+    return response.status(500).send('Unable to delete user, please try again')
   }
 }
