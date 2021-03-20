@@ -18,6 +18,7 @@ app.get('/api/posts', getAllPosts)
 app.get('/api/resources', getAllResources)
 
 app.post('/api/users', bodyParser.json(), saveNewUser)
+app.delete('/api/users', deleteUser)
 
 app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
 
