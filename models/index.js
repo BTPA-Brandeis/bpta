@@ -1,10 +1,10 @@
 import Sequelize from 'sequelize'
 import allConfig from '../config/sequelize'
-/*import posts from './posts'
-import Fitness from './fitness'
-import resources from './resources'
-import users from './users'
-import userFitnessLinkings from './userFitnessLinkings' */
+import UsersModel from './users'
+import FitnessesModel from './fitnesses'
+import PostsModel from './posts'
+import ResourcesModel from './resources'
+// import userFitnessesLinkingsModel from './userFitnessesLinkings'
 
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
 const config = allConfig[environment]
@@ -13,11 +13,11 @@ const connection = new Sequelize(config.database, config.username, config.passwo
   host: config.host, dialect: config.dialect,
 })
 
-// const Users = UsersModel(connection, Sequelize)
-/*const Fitness = FitnessModel(connection, Sequelize)
+const Users = UsersModel(connection, Sequelize)
+const Fitnesses = FitnessesModel(connection, Sequelize)
 const Posts = PostsModel(connection, Sequelize)
 const Resources = ResourcesModel(connection, Sequelize)
-const UserFitnessLinkings = UserFitnessLinkingsModel(connection, Sequelize, Users, Fitness)*/
+// const UserFitnessesLinkings = UserFitnessesLinkingsModel(connection, Sequelize, Users, Fitnesses)*/
 
 /*???.belongsTo()
 ???.hasMany()
@@ -25,10 +25,10 @@ const UserFitnessLinkings = UserFitnessLinkingsModel(connection, Sequelize, User
 ????.belongsToMany(??, { through: ??table })
 */
 export default {
-  /*Users,
-  Fitness,
+  Users,
+  Op: Sequelize.Op,
+  Fitnesses,
   Posts,
   Resources,
-  SequelizeOp,
-  UserFitnessLinkings,*/
+  //UserFitnessesLinkings,
 }

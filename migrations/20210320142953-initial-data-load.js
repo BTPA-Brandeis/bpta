@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -9,15 +7,15 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     await queryInterface.bulkInsert('users', [
-      { userFirstName: '', userLastName: '', password: '', accessLevel: 1, email: '', DOB: '', profileImage: '', securityQuestionOne: '', securityQuestionTwo: '', locationZone: '' },
+      { userFirstName: 'Carrye', userLastName: 'Gaulin', password: 'fucker', accessLevel: 1, email: 'carryegaulin111@gmail.com', DOB: '03/31/1978', profileImage: 'me.jpg', securityQuestionOne: 'work dammit', securityQuestionTwo: 'for real', locationZone: '7' },
     ]),
 
-      await queryInterface.bulkInsert('fitness', [
+      await queryInterface.bulkInsert('fitnesses', [
         { userID: 1, pushUps: 0, sitUps: 0, boxJumps: 0, kilometersRan: 0, waterIntakeOz: 0 }
       ]),
 
-      await queryInterface.bulkInsert('usersFitnessLinkings', [
-        { userID: 1, fitnessID: 1 }
+      await queryInterface.bulkInsert('usersFitnessesLinkings', [
+        { userID: 1, fitnessesID: 1 }
       ]),
 
       await queryInterface.bulkInsert('posts', [
@@ -40,9 +38,9 @@ module.exports = {
 
     await queryInterface.bulkDelete('posts')
 
-    await queryInterface.bulkDelete('usuersFitnessLinkings')
+    await queryInterface.bulkDelete('usuersFitnessesLinkings')
 
-    await queryInterface.bulkDelete('fitness')
+    await queryInterface.bulkDelete('fitnesses')
 
     return queryInterface.bulkDelete('users')
   }

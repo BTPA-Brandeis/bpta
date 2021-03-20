@@ -20,7 +20,7 @@ CREATE TABLE users (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE fitness (
+CREATE TABLE fitnesses (
   id INT auto_increment,
   userID INT,
   pushUps INT,
@@ -34,14 +34,14 @@ CREATE TABLE fitness (
   PRIMARY KEY(id)
   );
   
-  CREATE TABLE userFitnessLinkings (
+  CREATE TABLE userFitnessesLinkings (
   userID INT,
-  fitnessID INT,
+  fitnessesID INT,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
   FOREIGN KEY (userID) REFERENCES users(id),
-  FOREIGN KEY (fitnessID) REFERENCES fitness(id)
+  FOREIGN KEY (fitnessesID) REFERENCES fitnesses(id)
 );
 
 CREATE TABLE posts (

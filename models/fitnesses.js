@@ -1,4 +1,4 @@
-export default (connection, Sequelize) => connection.define('fitness', {
+export default (connection, Sequelize) => connection.define('fitnesses', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   userID: { type: Sequelize.INTEGER, allowNull: false },
   pushUps: { type: Sequelize.INTEGER, allowNull: false },
