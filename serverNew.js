@@ -1,15 +1,27 @@
-import path from 'path'
-import express from 'express'
-// import bodyParser from 'body-parser'
-import { getAllUsers } from './controllers/users'
-import { getAllFitnesses } from './controllers/fitnesses'
-import { getAllPosts } from './controllers/posts'
-import { getAllResources } from './controllers/resources'
+const path = require('path');
+const express = require('express');
 const db = require('./models'); //Requiring models folder to set up sequelize
-const app = express()
-import passport from './config/passport'; // Requiring passport
-import session from 'express-session'; // Requiring session for passport
+const app = express();
+const passport = require("./config/passport"); // Requiring passport
+const session = require("express-session"); // Requiring session for passport
 const PORT = process.env.PORT || 1337;
+
+
+
+
+
+
+
+
+
+
+
+
+
+const getAllUsers = require('./controllers/users');
+const getAllFitnesses = require('./controllers/fitnesses');
+const getAllPosts = require('./controllers/posts');
+const getAllResources = require('./controllers/resources');
 
 // Passport Configs
 app.use(session({
@@ -26,12 +38,11 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.use(express.static('public'))
+// Controllers links
 app.get('/api/users', getAllUsers)
 app.get('/api/fitnesses', getAllFitnesses)
 app.get('/api/posts', getAllPosts)
 app.get('/api/resources', getAllResources)
-app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
 
 //{ force: false } to not overwrite DB each app load
 //{ force: true } to overwrite DB each app load
@@ -42,4 +53,3 @@ db.sequelize.sync({
 		console.log(`Listening on PORT ${PORT}`);
 	});
 });
-
