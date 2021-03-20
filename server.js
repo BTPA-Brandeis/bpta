@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 import { getAllUsers, getUserByLastName, saveNewUser } from './controllers/users'
-import { getAllFitnesses } from './controllers/fitnesses'
+import { getAllFitnesses, saveNewFitnesses } from './controllers/fitnesses'
 import { getAllPosts } from './controllers/posts'
 import { getAllResources } from './controllers/resources'
 
@@ -18,6 +18,7 @@ app.get('/api/posts', getAllPosts)
 app.get('/api/resources', getAllResources)
 
 app.post('/api/users', bodyParser.json(), saveNewUser)
+app.post('/api/fitnesses', bodyParser.json(), saveNewFitnesses)
 app.delete('/api/users', deleteUser)
 
 app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
