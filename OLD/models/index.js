@@ -1,10 +1,10 @@
-import Sequelize from 'sequelize'
-import allConfig from '../config/sequelize'
-import UsersModel from './users'
-import FitnessesModel from './fitnesses'
-import PostsModel from './posts'
-import ResourcesModel from './resources'
-// import userFitnessesLinkingsModel from './userFitnessesLinkings'
+const Sequelize = require('sequelize')
+const allConfig = require('../config/sequelize')
+const UsersModel = require('./users')
+const WorkoutsModel = require('./workouts')
+const PostsModel = require('./posts')
+const ResourcesModel = require('./resources')
+
 
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
 const config = allConfig[environment]
@@ -14,21 +14,14 @@ const connection = new Sequelize(config.database, config.username, config.passwo
 })
 
 const Users = UsersModel(connection, Sequelize)
-const Fitnesses = FitnessesModel(connection, Sequelize)
+const Workouts = WorkoutsModel(connection, Sequelize)
 const Posts = PostsModel(connection, Sequelize)
 const Resources = ResourcesModel(connection, Sequelize)
-// const UserFitnessesLinkings = UserFitnessesLinkingsModel(connection, Sequelize, Users, Fitnesses)*/
 
-/*???.belongsTo()
-???.hasMany()
-???.belongsToMany(??, { through: ??Table })
-????.belongsToMany(??, { through: ??table })
-*/
-export default {
+module.exports = {
   Users,
   Op: Sequelize.Op,
-  Fitnesses,
+  Workouts,
   Posts,
   Resources,
-  //UserFitnessesLinkings,
 }

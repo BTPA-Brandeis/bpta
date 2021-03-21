@@ -20,7 +20,7 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE },
     })
 
-    await queryInterface.createTable('fitnesses', {
+    await queryInterface.createTable('workouts', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       userID: { type: Sequelize.INTEGER, allowNull: false },
       pushUps: { type: Sequelize.INTEGER, allowNull: false },
@@ -36,9 +36,9 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE },
     })
 
-    await queryInterface.createTable('usersFitnessesLinkings', {
+    await queryInterface.createTable('usersWorkoutsLinkings', {
       userID: { type: Sequelize.INTEGER, references: { model: 'users', key: 'id' } },
-      fitnessesID: { type: Sequelize.INTEGER, references: { model: 'fitnesses', key: 'id' } },
+      workoutsID: { type: Sequelize.INTEGER, references: { model: 'workouts', key: 'id' } },
       createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,
@@ -85,8 +85,8 @@ module.exports = {
      */
     await queryInterface.dropTable('resources')
     await queryInterface.dropTable('posts')
-    await queryInterface.dropTable('userFitnessesLinkings')
-    await queryInterface.dropTable('fitnesses')
+    await queryInterface.dropTable('userWorkoutsLinkings')
+    await queryInterface.dropTable('workouts')
     return queryInterface.dropTable('users')
   },
 }
