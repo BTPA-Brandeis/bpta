@@ -4,15 +4,14 @@
   "description": "Argon Pro React Native, based on Argon Design System. Coded by Creative Tim",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
     "dev": "./node_modules/.bin/concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "start:dev": "concurrently \"nodemon --ignore 'npm start ios'\" \"node\"",
-    "dev:client": "expo start --ios",
+    "dev:client": "expo start",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "dev:server": "node server.js"
+    "dev:server": "env-cmd node server.js"
   },
   "repository": {
     "type": "git",
