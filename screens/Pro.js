@@ -28,15 +28,9 @@ export default class Pro extends React.Component {
           <Block space="between" style={styles.padded}>
             <Block>
               <Block>
-                <Image
-                  source={Images.ArgonLogo}
-                  style={{ marginBottom: theme.SIZES.BASE * 1.5 }}
-                />
-              </Block>
-              <Block>
                 <Block>
                   <Text style={{ fontFamily: 'open-sans-regular' }} color="white" size={60}>
-                    Argon
+                   Sign In
                   </Text>
                 </Block>
                 <Block>
@@ -56,33 +50,13 @@ export default class Pro extends React.Component {
                 </Block>
               </Block>
               <Text
-                size={16}
+                size={20}
                 color="rgba(255,255,255,0.6)"
                 style={{ marginTop: 35, fontFamily: 'open-sans-regular' }}
               >
                 Take advantage of all the features and screens made upon Galio
                 Design System, coded on React Native for both.
               </Text>
-              <Block
-                row
-                style={{
-                  marginTop: theme.SIZES.BASE * 1.5,
-                  marginBottom: theme.SIZES.BASE * 4
-                }}
-              >
-                <Image
-                  source={Images.iOSLogo}
-                  style={{
-                    height: 38,
-                    width: 82,
-                    marginRight: theme.SIZES.BASE * 1.5
-                  }}
-                />
-                <Image
-                  source={Images.androidLogo}
-                  style={{ height: 38, width: 140 }}
-                />
-              </Block>
               <Button
                 shadowless
                 style={styles.button}

@@ -217,6 +217,60 @@ function ArticlesStack(props) {
   );
 }
 
+function WellnessStack(props) {
+  return (
+    <Stack.Navigator initialRouteName="Profile" mode="card" headerMode="screen">
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              transparent
+              white
+              title="Wellness"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#FFFFFF" },
+          headerTransparent: true
+        }}
+      />
+      <Stack.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              back
+              title="Shopping Cart"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#FFFFFF" }
+        }}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={NotificationsStack}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              back
+              title="Notifications"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#FFFFFF" }
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function ProfileStack(props) {
   return (
     <Stack.Navigator initialRouteName="Profile" mode="card" headerMode="screen">
@@ -456,7 +510,7 @@ function AppStack(props) {
           fontWeight: "normal"
         }
       }}
-      initialRouteName="Home"
+      initialRouteName="Pro"
     >
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Profile" component={ProfileStack} />

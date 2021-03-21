@@ -10,12 +10,12 @@ const { width } = Dimensions.get("screen");
 function CustomDrawerContent({ drawerPosition, navigation, profile, focused, state, ...rest }) {
   const insets = useSafeArea();
   const screens = [
-    "Home", 
-    "Profile",
-    "Account",
-    "Elements",
-    "Articles",
-    "Settings",
+    "Home", //Home
+    "Wellness", //Profile
+    "Events",//Account
+    "Forms",//Elements
+    "Mentorship",//Articles
+    "Resources"//Setting
   ];
   return (
     <Block
@@ -39,9 +39,10 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
             })}
             <Block flex style={{ marginTop: 24, marginVertical: 8, paddingHorizontal: 8 }}>
               <Block style={{ borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }}/>
-              <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8, fontFamily: 'open-sans-regular' }}>DOCUMENTATION</Text>
+              <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8, fontFamily: 'open-sans-regular' }}>ACCOUNT</Text>
             </Block>
-            <DrawerCustomItem title="Getting Started" navigation={navigation} />
+            <DrawerCustomItem title="Settings" navigation={navigation} />
+            <DrawerCustomItem title="Sign Out" navigation={navigation} />
         </ScrollView>
       </Block>
     </Block>

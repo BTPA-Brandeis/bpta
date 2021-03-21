@@ -7,7 +7,7 @@ import argonTheme from '../constants/Theme';
 
 const defaultMenu = [
   { id: 'music', title: 'Music', },
-  { id: 'beauty', title: 'Beauty', },
+  { id: 'beauty', title: 'Dogshit', },
   { id: 'fashion', title: 'Fashion', },
   { id: 'motocycles', title: 'Motocycles', },
 ];
