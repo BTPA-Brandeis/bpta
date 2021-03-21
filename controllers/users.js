@@ -44,3 +44,24 @@ export const deleteUser = async (request, response) => {
     return response.status(500).send('Unable to delete user, please try again')
   }
 }
+
+export const updateUser = async (request, response) => {
+  try {
+    const { ID } = req.params
+    const {
+      userFirstName, userLastName, password, accessLevel, 
+      email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
+    } = req.body
+    const user = await models.Users.findOne({ where: { id } })
+    if (!user) return res.status(404).send(`Can't find user with id: ${ID}`)
+    await models.Users.update({
+      userFirstName, userLastName, password, accessLevel,
+      email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
+    }, {
+      where: { ID },
+    })
+    return res.send(`Successfully updated the user: ${ID}.`)
+  } catch (error) {
+    return res.status(500).send('Unknown error while updating user, please try again')
+  }
+}
