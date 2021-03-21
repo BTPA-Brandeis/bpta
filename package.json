@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "dev": "./node_modules/.bin/concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon server.js",
     "start:dev": "concurrently \"nodemon --ignore 'npm start ios'\" \"node\"",
     "dev:client": "expo start",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
