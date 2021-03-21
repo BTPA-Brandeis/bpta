@@ -92,14 +92,7 @@ class Profile extends React.Component {
                   </Block>
                 </Block>
                 <Block flex>
-                  <Block middle style={styles.nameInfo}>
-                    <Text style={{ fontFamily: 'open-sans-regular' }} size={28} color="#32325D">
-                      Jessica Jones, 27
-                    </Text>
-                    <Text size={16} color="#32325D" style={{ marginTop: 10, fontFamily: 'open-sans-light' }}>
-                      San Francisco, USA
-                    </Text>
-                  </Block>
+
                   <Block middle style={{ marginTop: 30, marginBottom: 16 }}>
                     <Block style={styles.divider} />
                   </Block>

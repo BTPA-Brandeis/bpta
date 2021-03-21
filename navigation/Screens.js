@@ -21,6 +21,8 @@ import Gallery from "../screens/Gallery";
 import Chat from "../screens/Chat";
 import Search from "../screens/Search";
 import Cart from "../screens/Cart";
+import Forms from '../screens/Forms';
+import Resources from "../screens/Resources";
 // settings
 import SettingsScreen from "../screens/Settings";
 import AgreementScreen from "../screens/Agreement";
@@ -78,6 +80,38 @@ function NotificationsStack(props) {
       <Tab.Screen name="Personal" component={PersonalNotifications} />
       <Tab.Screen name="System" component={SystemNotifications} />
     </Tab.Navigator>
+  );
+}
+function FormsStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="Forms"
+        component={Forms}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header title="Forms" navigation={navigation} scene={scene} />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+function ResourcesStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="Resources"
+        component={Resources}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header title="Resources" navigation={navigation} scene={scene} />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -516,6 +550,8 @@ function AppStack(props) {
       <Drawer.Screen name="Profile" component={ProfileStack} />
       <Drawer.Screen name="Account" component={Register} />
       <Drawer.Screen name="Elements" component={ElementsStack} />
+      <Drawer.Screen name="Forms" component={FormsStack} />
+      <Drawer.Screen name="Resources" component={ResourcesStack} />
       <Drawer.Screen name="Articles" component={ArticlesStack} />
       <Drawer.Screen name="Settings" component={SettingsStack} />
     </Drawer.Navigator>
