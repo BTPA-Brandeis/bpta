@@ -1,7 +1,9 @@
-import models from '../models'
+const models = require( '../models')
 
-export const getAllResources = async (request, response) => {
+const getAllResources = async (request, response) => {
   const resources = await models.Resources.findAll()
 
   return response.send(resources)
 }
+
+module.exports = { getAllResources }

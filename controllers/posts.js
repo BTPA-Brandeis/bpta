@@ -1,7 +1,9 @@
-import models from '../models'
+const models = require( '../models')
 
-export const getAllPosts = async (request, response) => {
+const getAllPosts = async (request, response) => {
   const posts = await models.Posts.findAll()
 
   return response.send(posts)
 }
+
+module.exports = { getAllPosts }

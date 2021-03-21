@@ -1,9 +1,9 @@
-import Sequelize from 'sequelize'
-import allConfig from '../config/sequelize'
-import UsersModel from './users'
-import WorkoutsModel from './workouts'
-import PostsModel from './posts'
-import ResourcesModel from './resources'
+const Sequelize = require('sequelize')
+const allConfig = require('../config/sequelize')
+const UsersModel = require('./users')
+const WorkoutsModel = require('./workouts')
+const PostsModel = require('./posts')
+const ResourcesModel = require('./resources')
 
 
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
@@ -18,7 +18,7 @@ const Workouts = WorkoutsModel(connection, Sequelize)
 const Posts = PostsModel(connection, Sequelize)
 const Resources = ResourcesModel(connection, Sequelize)
 
-export default {
+module.exports = {
   Users,
   Op: Sequelize.Op,
   Workouts,

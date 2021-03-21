@@ -1,4 +1,4 @@
-export default (connection, Sequelize) => connection.define('users', {
+const users = (connection, Sequelize) => connection.define('users', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   userFirstName: { type: Sequelize.STRING, allowNull: false },
   userLastName: { type: Sequelize.STRING, allowNull: false },
@@ -11,3 +11,5 @@ export default (connection, Sequelize) => connection.define('users', {
   securityQuestionTwo: { type: Sequelize.STRING, allowNull: false },
   locationZone: { type: Sequelize.INTEGER, allowNull: false },
 })
+
+module.exports = users
