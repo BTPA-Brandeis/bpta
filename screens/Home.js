@@ -4,7 +4,7 @@ import { Block, theme, Text } from "galio-framework";
 
 import { Card } from "../components";
 import articles from "../constants/articles";
-
+const { width } = Dimensions.get("screen");
 
 class Home extends React.Component {
   renderArticles = () => {
