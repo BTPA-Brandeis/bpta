@@ -1,6 +1,7 @@
 const models = require( '../models')
 
 const getAllUsers = async (request, response) => {
+  console.log(request)
   const users = await models.Users.findAll()
 
   return response.send(users)

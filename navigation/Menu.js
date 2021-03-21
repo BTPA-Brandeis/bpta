@@ -11,10 +11,10 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
   const insets = useSafeArea();
   const screens = [
     "Home", //Home
-    "Wellness", //Profile
-    "Events",//Account
-    "Forms",//Elements
-    "Mentorship",//Articles
+    "Fitness", //Profile
+    "Mentorship",//Account
+    "Community Events",//Elements
+    "Forms",//Articles
     "Resources"//Setting
   ];
   return (

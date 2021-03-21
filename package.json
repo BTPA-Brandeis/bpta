@@ -12,7 +12,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'npm start ios'\" \"node\"",
     "dev:client": "expo start --ios",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "dev:server": "node server.js"
+    "dev:server": "env-cmd node server.js"
   },
   "repository": {
     "type": "git",

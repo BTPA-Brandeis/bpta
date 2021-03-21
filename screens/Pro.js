@@ -1,112 +1,73 @@
 import React from "react";
-import {
-  ImageBackground,
-  Image,
-  StyleSheet,
-  StatusBar,
-  Dimensions,
-  Platform
-} from "react-native";
-import { Block, Button, Text, theme } from "galio-framework";
+import { ScrollView, StyleSheet } from "react-native";
+import { Block, Text, theme } from "galio-framework";
+import { Button } from "../components/";
 
-const { height, width } = Dimensions.get("screen");
-import { Images, argonTheme } from "../constants/";
-import { HeaderHeight } from "../constants/utils";
+import argonTheme from "../constants/Theme";
 
-export default class Pro extends React.Component {
+export default class Agreement extends React.Component {
   render() {
     const { navigation } = this.props;
-
     return (
-      <Block flex style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <Block flex>
-          <ImageBackground
-            source={Images.Pro}
-            style={{ flex: 1, height: height, width, zIndex: 1 }}
-          />
-          <Block space="between" style={styles.padded}>
-            <Block>
-              <Block>
-                <Block>
-                  <Text style={{ fontFamily: 'open-sans-regular' }} color="white" size={60}>
-                   Sign In
-                  </Text>
-                </Block>
-                <Block>
-                  <Text style={{ fontFamily: 'open-sans-regular' }} color="white" size={60}>
-                    Design
-                  </Text>
-                </Block>
-                <Block row>
-                  <Text style={{ fontFamily: 'open-sans-regular' }} color="white" size={60}>
-                    System
-                  </Text>
-                  <Block middle style={styles.pro}>
-                    <Text style={{ fontFamily: 'open-sans-bold' }} size={16} color="white">
-                      PRO
-                    </Text>
-                  </Block>
-                </Block>
-              </Block>
-              <Text
-                size={20}
-                color="rgba(255,255,255,0.6)"
-                style={{ marginTop: 35, fontFamily: 'open-sans-regular' }}
-              >
-                Take advantage of all the features and screens made upon Galio
-                Design System, coded on React Native for both.
-              </Text>
-              <Button
-                shadowless
-                style={styles.button}
-                color={argonTheme.COLORS.INFO}
-                onPress={() => navigation.navigate("App")}
-              >
-                <Text style={{ fontFamily: 'open-sans-bold', fontSize: 14 }} color={theme.COLORS.WHITE}>
-                  GET STARTED
-                </Text>
-              </Button>
-            </Block>
+      <Block flex style={{ position: "relative" }}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.agreements}
+          overScrollMode="always"
+        >
+          <Text
+            style={{ fontFamily: "open-sans-bold" }}
+            size={16}
+            color={argonTheme.COLORS.TEXT}
+          >
+            Behavior Guidelines - Students shall be responsible for their words
+            and actions. Students shall be respectful of others. Students shall
+            follow directions from staff members. Prohibited Behaviors
+            Endangering the health and safety of themselves, other campers,
+            and/or staff or volunteers.
+          </Text>
+          <Text
+            style={{ fontFamily: "open-sans-regular" }}
+            size={16}
+            color={argonTheme.COLORS.TEXT}
+            style={{ paddingTop: 9 }}
+          >
+            • Stealing, damaging, or failing to care for University or personal
+            property. • Continual disruption of the program. • Refusal to follow
+            the behavior guidelines. • Inappropriate physical contact. • Using
+            profanity or inappropriate language or displaying clothing or other
+            personal items with offensive content. • Bullying or acts of
+            aggression or violence.
+          </Text>
+          <Text
+            style={{ fontFamily: "open-sans-regular" }}
+            size={16}
+            color={argonTheme.COLORS.TEXT}
+            style={{ paddingTop: 9 }}
+          >
+            • Possession or use of illegal substances, tobacco, or alcohol. •
+            Possession of weapons - any object that may cause harm to another,
+            or place another person in fear of his/her safety, may be considered
+            a weapon.
+          </Text>
+          <Block center>
+            <Button
+              textStyle={{ fontFamily: "open-sans-bold" }}
+              color="primary"
+              style={styles.button}
+              onPress={() => navigation.navigate("App")}
+            >
+              Accept
+            </Button>
           </Block>
-        </Block>
+        </ScrollView>
       </Block>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.COLORS.BLACK,
-    marginTop: Platform.OS === "android" ? -HeaderHeight : 0
+  agreements: {
+    padding: theme.SIZES.BASE,
   },
-  padded: {
-    paddingHorizontal: theme.SIZES.BASE * 2,
-    zIndex: 3,
-    position: "absolute",
-    bottom:
-      Platform.OS === "android" ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3
-  },
-  button: {
-    width: width - theme.SIZES.BASE * 4,
-    height: theme.SIZES.BASE * 3,
-    shadowRadius: 0,
-    shadowOpacity: 0
-  },
-  pro: {
-    backgroundColor: argonTheme.COLORS.INFO,
-    paddingHorizontal: 8,
-    marginLeft: 3,
-    borderRadius: 4,
-    height: 22,
-    marginTop: 15
-  },
-  gradient: {
-    zIndex: 1,
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 66
-  }
 });

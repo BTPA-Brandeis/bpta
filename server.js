@@ -5,6 +5,7 @@ const { getAllUsers, getUserByLastName, saveNewUser, deleteUser, updateUser} = r
 const { getAllWorkouts, saveNewWorkouts } = require('./controllers/workouts')
 const { getAllPosts } = require('./controllers/posts')
 const { getAllResources } = require('./controllers/resources')
+const PORT = process.env.PORT || 1337;
 
 const app = express()
 app.use(express.static('public'))
@@ -27,6 +28,6 @@ app.delete('/api/users/:ID', deleteUser)
 
 app.all('*', (request, response) => response.sendFile(path.resolve(__dirname, 'public', 'index.html')))
 
-app.listen(1337, () => {
-  console.log('Listening on port 1337...')
+app.listen(PORT, () => {
+  console.log(`Server Initialized: Listening @ http://localhost:${PORT}/`)
 })
