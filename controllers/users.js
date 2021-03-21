@@ -5,3 +5,63 @@ export const getAllUsers = async (request, response) => {
 
   return response.send(users)
 }
+
+export const getUserByLastName = async (request, response) => {
+  const { userLastName } = request.params
+
+  const user = await models.Users.findOne({
+    where: { userLastName },
+  })
+
+  return response.send(user)
+}
+
+export const saveNewUser = async (request, response) => {
+  try {
+    const { userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone } = request.body
+
+    if (!userFirstName || !userLastName || !password || !accessLevel || !email || !DOB || !profileImage || !securityQuestionOne || !securityQuestionTwo || !locationZone) {
+      return response
+        .status(400)
+        .send('The following fields are required: userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone')
+    }
+
+    const newUser = await models.Users.create({ userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone })
+
+    return response.status(201).send(newUser)
+  } catch (error) {
+    return response.status(500).send('Unable to save new user, please try again')
+  }
+}
+
+export const deleteUser = async (request, response) => {
+  try {
+    const { ID } = request.params
+    const user = await models.Users.findOne({ where: { ID } })
+    await models.Users.destroy({ where: { ID } })
+    return response.sendStatus(204)
+  } catch (error) {
+    return response.status(500).send('Unable to delete user, please try again')
+  }
+}
+
+export const updateUser = async (request, response) => {
+  try {
+    const { ID } = req.params
+    const {
+      userFirstName, userLastName, password, accessLevel, 
+      email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
+    } = req.body
+    const user = await models.Users.findOne({ where: { id } })
+    if (!user) return res.status(404).send(`Can't find user with id: ${ID}`)
+    await models.Users.update({
+      userFirstName, userLastName, password, accessLevel,
+      email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
+    }, {
+      where: { ID },
+    })
+    return res.send(`Successfully updated the user: ${ID}.`)
+  } catch (error) {
+    return res.status(500).send('Unknown error while updating user, please try again')
+  }
+}
