@@ -1,12 +1,12 @@
-import models from '../models'
+const models = require( '../models')
 
-export const getAllUsers = async (request, response) => {
+const getAllUsers = async (request, response) => {
   const users = await models.Users.findAll()
 
   return response.send(users)
 }
 
-export const getUserByLastName = async (request, response) => {
+const getUserByLastName = async (request, response) => {
   const { userLastName } = request.params
 
   const user = await models.Users.findOne({
@@ -16,7 +16,7 @@ export const getUserByLastName = async (request, response) => {
   return response.send(user)
 }
 
-export const saveNewUser = async (request, response) => {
+const saveNewUser = async (request, response) => {
   try {
     const { userFirstName, userLastName, password, accessLevel, email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone } = request.body
 
@@ -34,7 +34,7 @@ export const saveNewUser = async (request, response) => {
   }
 }
 
-export const deleteUser = async (request, response) => {
+const deleteUser = async (request, response) => {
   try {
     const { ID } = request.params
     const user = await models.Users.findOne({ where: { ID } })
@@ -45,23 +45,31 @@ export const deleteUser = async (request, response) => {
   }
 }
 
-export const updateUser = async (request, response) => {
+const updateUser = async (request, response) => {
   try {
-    const { ID } = req.params
+    const { ID } = request.params
     const {
       userFirstName, userLastName, password, accessLevel, 
       email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
-    } = req.body
-    const user = await models.Users.findOne({ where: { id } })
-    if (!user) return res.status(404).send(`Can't find user with id: ${ID}`)
+    } = request.body
+    const user = await models.Users.findOne({ where: { ID } })
+    if (!user) return response.status(404).send(`Can't find user with id: ${ID}`)
     await models.Users.update({
       userFirstName, userLastName, password, accessLevel,
       email, DOB, profileImage, securityQuestionOne, securityQuestionTwo, locationZone
     }, {
       where: { ID },
     })
-    return res.send(`Successfully updated the user: ${ID}.`)
+    return response.send(`Successfully updated the user: ${ID}.`)
   } catch (error) {
-    return res.status(500).send('Unknown error while updating user, please try again')
+    return response.status(500).send('Unknown error while updating user, please try again')
   }
+}
+
+module.exports = {
+  getAllUsers,
+  getUserByLastName,
+  saveNewUser,
+  deleteUser,
+  updateUser
 }

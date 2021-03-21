@@ -1,12 +1,12 @@
-import models from '../models'
+const models = require( '../models')
 
-export const getAllWorkouts = async (request, response) => {
+const getAllWorkouts = async (request, response) => {
   const workouts = await models.Workouts.findAll()
 
   return response.send(workouts)
 }
 
-export const saveNewWorkouts = async (request, response) => {
+const saveNewWorkouts = async (request, response) => {
   try {
     const { userID, pushUps, sitUps, boxJumps, kilometersRan, waterIntakeOz } = request.body
 
@@ -23,4 +23,6 @@ export const saveNewWorkouts = async (request, response) => {
     return response.status(500).send('Unable to save new workouts, please try again')
   }
 }
+
+module.exports = { getAllWorkouts, saveNewWorkouts}
 
