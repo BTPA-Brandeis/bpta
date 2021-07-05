@@ -1,6 +1,6 @@
 CREATE DATABASE btpa;
 USE btpa;
-SHOW TABLES;
+
 
 CREATE TABLE users (
   id INT auto_increment,
